@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="quiz-bg">
+    <div class="quiz" id="quiz">
+      <div class="quiz-header" id="header">
+        <h2 class="quiz-title">Загружаем вопрос ...</h2>
+      </div>
+      <ul class="quiz-list" id="list">
+        <li>
+          <label class="control control-radio">
+            <input type="radio" class="answer" name="answer" checked="checked">
+            <span>Ответ...</span>
+            <div class="control_indicator"></div>
+          </label>
+        </li>
+        <li>
+          <label class="control control-radio">
+            <input type="radio" class="answer" name="answer">
+            <span>Ответ...</span>
+            <div class="control_indicator"></div>
+          </label>
+        </li>
+        
+      </ul>
+      <button class="button submit-button submit" id="submit">Ответить</button>
+    </div>
+  </div>
+
+
+
+  <script src="main.js"></script>
+</body>
+
+</html>
