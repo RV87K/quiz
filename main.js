@@ -10,14 +10,14 @@ const questions = [
     correct: 2,
   },
   {
-    question: "Какое супер блюдо готовит лучше всего самый красивый добрый честный и харизматичный член семьи Роман Каменев?",
-    answers: ["Пиво с рыбкой", "Борщ", "Мороженое Магнат", "Не знаю"],
+    question: "Какое блюдо любит больше всего самый красивый добрый честный и харизматичный член семьи Роман Каменев?",
+    answers: ["Пиво с рыбкой", "Борщ", "Мороженое Магнат", "Варённая сгущёнка"],
     correct: 2,
   },
   {
     question: "Люимое занятие Матильды",
-    answers: ["Смотреть сериал про Сюркана", "Смотреть в потолок", "Ходить на тренировку", "Убираться готовить и стирать"],
-    correct: 1,
+    answers: ["Смотреть сериал про Сюркана", "Смотреть в потолок", "Кушать конфетки", "Убираться готовить и стирать"],
+    correct: 3,
   },
 
 ]
@@ -48,7 +48,8 @@ function showQuestion() {
   headerContainer.innerHTML = title;
 
   //варианты ответов
-  for (answerText of questions[questionIndex]['answers']) {
+  let answerNumber = 1;
+  for (answerText of questions[questionIndex]['answers']) {   // перебор каждого значения массива questions[questionIndex]['answers'] и запись его переменную answerText
     const questionTemplate =
       `<li>
           <label class="control control-radio">
@@ -57,16 +58,42 @@ function showQuestion() {
             <div class="control_indicator"></div>
           </label>
         </li>`;
-    const answerHtml = questionTemplate.replace('%answer%', answerText);
+    const answerHtml = questionTemplate                    // замена методом replace значением переменной answerText каждую итерацию
+                              .replace('%answer%', answerText)
+                              .replace('%number%', answerNumber);
     containerList.innerHTML += answerHtml;    // добавляем результат к предидущему a+=b === a=a+b 
+    answerNumber++; // после выполнения блока кода увеличиваем значение переменной на еденицу
   }
 }
 
 function checkAnswer() {
   const checkedRadio = document.querySelector('input[type="radio"]:checked');  //находим выбранный ответ
-  console.log(checkedRadio);
   if (!checkedRadio) {       // если вариант не выбран и checkedRadio == false 
     submitBtn.blur();       // разфокусируем кнопку
     return
   }
+  const userAnswer = parseInt(checkedRadio.value); // значение(value) выбранного(checked) ответа переводим в число
+  if(userAnswer === questions[questionIndex]['correct']) {
+    console.log('yes!')
+    score++;
+  } else {
+    console.log('no')
+  }
+
+  if(questionIndex !== questions.length - 1) {
+    console.log('это не последний вопрос')
+    questionIndex++;
+    clearPage();
+    showQuestion();
+
+  } else {
+    console.log('это последний вопрос')
+    clearPage();
+    showResults();
+  }
+
+}
+
+function showResults() {
+  console.log('showResults started...')
 }
