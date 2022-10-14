@@ -26,6 +26,9 @@ body{
   color: blueviolet;
   filter: blur(.5px);
 }
+.quiz-header .result{
+  font-size: 22px;
+}
 
 .quiz-list{
   padding-bottom: 15px;

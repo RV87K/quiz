@@ -59,8 +59,8 @@ function showQuestion() {
           </label>
         </li>`;
     const answerHtml = questionTemplate                    // замена методом replace значением переменной answerText каждую итерацию
-                              .replace('%answer%', answerText)
-                              .replace('%number%', answerNumber);
+      .replace('%answer%', answerText)
+      .replace('%number%', answerNumber);
     containerList.innerHTML += answerHtml;    // добавляем результат к предидущему a+=b === a=a+b 
     answerNumber++; // после выполнения блока кода увеличиваем значение переменной на еденицу
   }
@@ -73,14 +73,14 @@ function checkAnswer() {
     return
   }
   const userAnswer = parseInt(checkedRadio.value); // значение(value) выбранного(checked) ответа переводим в число
-  if(userAnswer === questions[questionIndex]['correct']) {
+  if (userAnswer === questions[questionIndex]['correct']) {
     console.log('yes!')
     score++;
   } else {
     console.log('no')
   }
 
-  if(questionIndex !== questions.length - 1) {
+  if (questionIndex !== questions.length - 1) {
     console.log('это не последний вопрос')
     questionIndex++;
     clearPage();
@@ -95,5 +95,36 @@ function checkAnswer() {
 }
 
 function showResults() {
-  console.log('showResults started...')
+  console.log('showResults started...');
+  let title, message;
+
+  const resultsTemplate = `
+  <h2 class="quiz-title">%title%</h2>
+  <h3 class="summary">%message%</h3>
+  <p class="result">%result%</p>
+  `;
+
+  if (score === questions.length) {
+    title = '🎉👏🎉👏Поздравляем👏🎉👏🎉';
+    message = 'Вы ответили правильно на все вопросы 😎👍';
+  } else if (score * 100 / questions.length >= 50) {
+    title = 'Вы дали такой себе результат😉';
+    message = 'Ой ребята че то как то так себе👍';
+  } else {
+    title = 'Ну вы че блин ???😐';
+    message = 'Че то смотрю вообще не шарите как мир устроен';
+  }
+  
+  let result = `${score} из ${questions.length}`;
+
+  const finalMessge = resultsTemplate
+                          .replace('%title%', title)
+                          .replace('%message%', message)
+                          .replace('%result%', result);
+
+  headerContainer.innerHTML = finalMessge;  
+  submitBtn.innerHTML = 'Играть заново!';
+  submitBtn.onclick = function() {
+    history.go();   // обновление страницы
+  }                  
 }
