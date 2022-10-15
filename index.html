@@ -14,26 +14,36 @@
 
 <body>
   <div class="quiz-bg">
-    <div class="quiz" id="quiz">
-      <div class="quiz-header" id="header">
-        <!--   заголовок вопроса  -->
-        <h2 class="quiz-title">Загружаем вопрос ...</h2>
-        <!--   результат викторины  -->
-        <h2 class="quiz-title">%title%</h2>
-        <h3 class="summary">%message%</h3>
-        <p class="result">%result%</p>
+    <div class="quiz center" id="quiz">
+      <div class="quiz-front">
+        <div class="quiz-header" id="header">
+          <!--   заголовок вопроса  -->
+          <h2 class="quiz-title">Загружаем вопрос ...</h2>
+          <!--   результат викторины  -->
+          <h2 class="quiz-title">%title%</h2>
+          <h3 class="summary">%message%</h3>
+          <p class="result">%result%</p>
+        </div>
+        <ul class="quiz-list" id="list">
+          <li>
+            <label class="control control-radio">
+              <input type="radio" class="answer" name="answer" checked="checked">
+              <span>Ответ...</span>
+              <div class="control_indicator"></div>
+            </label>
+          </li>
+        </ul>
+        <button class="button submit-button submit" id="submit">Ответить</button>
       </div>
-      <ul class="quiz-list" id="list">
-        <li>
-          <label class="control control-radio">
-            <input type="radio" class="answer" name="answer" checked="checked">
-            <span>Ответ...</span>
-            <div class="control_indicator"></div>
-          </label>
-        </li>
-      </ul>
-      <button class="button submit-button submit" id="submit">Ответить</button>
+      <div class="quiz-back">
+        <div class="quiz-back__content center">
+          <h2>Правильно!!!</h2>
+          <span>Продолжай</span>
+          <button class="next-question">Следующий вопрос</button>
+        </div>
+      </div>
     </div>
+
   </div>
 
 
