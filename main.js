@@ -23,7 +23,6 @@ const questions = [
 ]
 
 // Находим элементы
-const quizBlock = document.querySelector('#quiz');
 const headerContainer = document.querySelector('#header');
 const containerList = document.querySelector('#list');
 const submitBtn = document.querySelector('#submit');
@@ -36,9 +35,6 @@ clearPage();
 showQuestion();
 submitBtn.onclick = checkAnswer;
 
-const correctAnimation = function() {
-  quizBlock.classList.add('quiz-backSide');
-}
 
 function clearPage() {
   headerContainer.innerHTML = '';
@@ -80,17 +76,18 @@ function checkAnswer() {
   if (userAnswer === questions[questionIndex]['correct']) {
     console.log('yes!')
     score++;
-    correctAnimation();
   } else {
     console.log('no')
   }
 
   if (questionIndex !== questions.length - 1) {
+    console.log('это не последний вопрос')
     questionIndex++;
     clearPage();
     showQuestion();
 
   } else {
+    console.log('это последний вопрос')
     clearPage();
     showResults();
   }
