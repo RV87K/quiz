@@ -15,7 +15,9 @@ body{
   width: 500px;
   background-color:floralwhite;
   border-radius: 5px;
-  /* animation: slidein .8s; */
+  animation: slidein .8s;
+  perspective: 1000px;
+  transform-style: preserve-3d;
 }
 
 .center{
@@ -25,49 +27,8 @@ body{
   transform: translate(-50%, -50%); 
 }
 
-.quiz-front,
-.quiz-back{
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  backface-visibility: hidden;
-  transition: transform .6s linear;
-}
-
 .quiz-front{
-  transform: perspective(600px) rotateY(0deg);
-}
-.quiz-back{
-  transform: perspective(600px) rotateY(180deg);
-  background-color: #2aa1c0;
-}
-
-.quiz:hover > .quiz-front{
-  transform: perspective(600px) rotateY(-180deg);
-}
-.quiz:hover > .quiz-back{
-  transform: perspective(600px) rotateY(0deg);
-}
-/* .quiz:hover{
-  animation: turnCard 1s;
-} */
-
-@keyframes turnCard{
-  from{
-    transform: perspective(600px) rotateY(0);
-  }
-  
-  to{
-    transform: perspective(600px) rotateY(180deg);
-  }
-}
-
-.front{
-  transform: perspective(600px) rotateY(0);
-}
-
-.back{
-  transform: perspective(600px) rotateY(180deg);
+  transition: transform 0.2s;
 }
 
 .quiz-header{
